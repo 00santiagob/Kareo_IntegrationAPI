@@ -15,11 +15,11 @@ if __name__ == "__main__":
     for arg in sys.argv[1:]:
         print(arg)
         if "Key=" in arg:
-            CustomerKey = arg[3:]
+            CustomerKey = arg[4:]
         elif "User=" in arg:
-            User = arg[4:]
+            User = arg[5:]
         elif "Pass=" in arg:
-            Password = arg[4:]
+            Password = arg[5:]
         else:
             pass
 
