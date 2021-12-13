@@ -11,4 +11,6 @@ Integration Kareo with Python using the Kareo Web Services API 2.1
 
 #### Uso
 
-`python3 kareo.py`
+Sustituir los valores por los correctos.
+
+`python3 kareo.py Key=example User=example@example.com Pass=example`

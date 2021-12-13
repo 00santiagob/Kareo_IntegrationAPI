@@ -12,16 +12,23 @@ from Method.update import *
 
 if __name__ == "__main__":
 
+    CustomerKey = None
+    User = None
+    Password = None
+
     for arg in sys.argv[1:]:
-        print(arg)
-        if "Key=" in arg:
+        if "Key" in arg:
             CustomerKey = arg[4:]
-        elif "User=" in arg:
+        elif "User" in arg:
             User = arg[5:]
-        elif "Pass=" in arg:
+        elif "Pass" in arg:
             Password = arg[5:]
         else:
             pass
+
+    if CustomerKey is None or User is None or Password is None:
+        print("Some or all of the parameters are incorrect")
+        exit()
 
     # Base URL for API requests
     wsdl = "https://webservice.kareo.com/services/soap/2.1/KareoServices.svc?singleWsdl"

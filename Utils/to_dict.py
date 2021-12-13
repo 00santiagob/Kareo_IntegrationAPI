@@ -1,5 +1,8 @@
 from suds.sudsobject import asdict
 
+import json
+
+
 def recursive_dict(dic):
     # Convert it into the serializable json format.
     out = {}
@@ -15,5 +18,5 @@ def recursive_dict(dic):
                 else:
                     out[key].append(value)
         else:
-            out[key] = dic[key]
+            out[key] = str(dic[key])
     return out

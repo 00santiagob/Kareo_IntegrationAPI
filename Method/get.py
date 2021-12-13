@@ -29,7 +29,7 @@ def get_appointment(client, CustomerKey, User, Password):
         print('\033[32m', "(Ok)", '\033[0m')
         print("\n"+"Assigning the values to: Appointment ...", end="", flush=True)
         GetAppointmentReq.Appointment = {
-            "AppointmentId" : ""
+            "AppointmentId" : "4"
         }
         print('\033[32m', "(Ok)", '\033[0m')
 
@@ -78,36 +78,41 @@ def get_appointments(client, CustomerKey, User, Password):
         print("\n"+"Assigning the values to: Filter ...", end="", flush=True)
         GetAppointmentsReq.Filter = {
             #"AppointmentReason" : "",
-            #"ConfirmationStatus" : "",
-            #"EndDate" : "",
+            #"ConfirmationStatus" : "", # Confirmed, Check-in, No-show, Check-out, Rescheduled, Scheduled, Cancelled
+            "EndDate" : "11/30/2021 8:30:00 PM",
             #"FromCreatedDate" : "",
             #"FromLastModifiedDate" : "",
             #"PatientCasePayerScenario" : "",
-            #"PatientFullName" : "SANTIAGO BALOG",
-            #"PatientID" : "3",
-            "PracticeName" : "Intelligent Sleep with Renuma"
+            #"PatientFullName" : "",
+            #"PatientID" : "",
+            "PracticeName" : "Intelligent Sleep with Renuma",
             #"ResourceName" : "",
             #"ServiceLocationName" : "",
-            #"StartDate" : "",
-            #"TimeZoneOffsetFromGMT" : "",
+            "StartDate" : "11/01/2021 4:00:00 AM",
+            "TimeZoneOffsetFromGMT" : "0",
             #"ToCreatedDate" : "",
             #"ToLastModifiedDate" : "",
-            #"Type" : ""
+            "Type" : "Patient"
         }
+
         print('\033[32m', "(Ok)", '\033[0m')
         print("\n"+"Assigning the values to: Fields ...", end="", flush=True)
         GetAppointmentsReq.Fields = {
             "AllDay" : True,
+            "AppointmentReason1" : True,
             "ConfirmationStatus" : True,
             "CreatedDate" : True,
             "EndDate" : True,
             "ID" : True,
             "LastModifiedDate" : True,
+            "Notes" : True,
             "PatientFullName" : True,
             "PatientID" : True,
             "PracticeID" : True,
             "PracticeName" : True,
             "Recurring" : True,
+            "ResourceName1" : True,
+            "ServiceLocationName" : True,
             "StartDate" : True,
             "Type" : True
         }
