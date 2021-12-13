@@ -7,49 +7,49 @@ from Utils.to_dict import recursive_dict
 from Utils.console import clear_console
 
 def create_appointment(client, CustomerKey, User, Password):
-    term_size = os.get_terminal_size()
-    print("\n")
-    print('\033[33m'+'=' * term_size.columns + '\033[0m')
+   term_size = os.get_terminal_size()
+   print("\n")
+   print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-    try:
-        #   Create a factory and assign the values
-        print("\n"+"Creating factory: AppointmentStatus ...", end="", flush=True)
-        AppointmentStatus = client.factory.create('AppointmentStatus')
-        print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", AppointmentStatus)
-        #print("\n"+"Assigning the values to: AppointmentStatus ...", end="", flush=True)
-        #AppointmentStatus = {
-        #    "value" : AppointmentStatus['Scheduled']
-        #}
-        #print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", AppointmentStatus)
-        #print('\033[33m'+'=' * term_size.columns + '\033[0m')
+   try:
+      #   Create a factory and assign the values
+      print("\n"+"Creating factory: AppointmentStatus ...", end="", flush=True)
+      AppointmentStatus = client.factory.create('AppointmentStatus')
+      print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", AppointmentStatus)
+      #print("\n"+"Assigning the values to: AppointmentStatus ...", end="", flush=True)
+      #AppointmentStatus = {
+      #    "value" : AppointmentStatus['Scheduled']
+      #}
+      #print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", AppointmentStatus)
+      #print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Create a factory and assign the values
-        print("\n"+"Creating factory: AppointmentType ...", end="", flush=True)
-        AppointmentType = client.factory.create('AppointmentType')
-        print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", AppointmentType)
-        #print("\n"+"Assigning the values to: AppointmentType ...", end="", flush=True)
-        #AppointmentType = {
-        #    "value" : AppointmentType['P']
-        #}
-        #print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", AppointmentType)
-        #print('\033[33m'+'=' * term_size.columns + '\033[0m')
+      #   Create a factory and assign the values
+      print("\n"+"Creating factory: AppointmentType ...", end="", flush=True)
+      AppointmentType = client.factory.create('AppointmentType')
+      print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", AppointmentType)
+      #print("\n"+"Assigning the values to: AppointmentType ...", end="", flush=True)
+      #AppointmentType = {
+      #    "value" : AppointmentType['P']
+      #}
+      #print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", AppointmentType)
+      #print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Create a factory and assign the values
-        print("\n"+"Creating factory: ArrayOfGroupPatientSummary ...", end="", flush=True)
-        ArrayOfGroupPatientSummary = client.factory.create('ArrayOfGroupPatientSummary')
-        print('\033[32m', "(Ok)", '\033[0m')
+      #   Create a factory and assign the values
+      print("\n"+"Creating factory: ArrayOfGroupPatientSummary ...", end="", flush=True)
+      ArrayOfGroupPatientSummary = client.factory.create('ArrayOfGroupPatientSummary')
+      print('\033[32m', "(Ok)", '\033[0m')
 
-        #   Create a factory and assign the values
-        print("\n"+"Creating factory: PatientSummary ...", end="", flush=True)
-        PatientSummary = client.factory.create('PatientSummary')
-        print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", PatientSummary)
-        print("\n"+"Assigning the values to: PatientSummary ...", end="", flush=True)
-        PatientSummary = {
+      #   Create a factory and assign the values
+      print("\n"+"Creating factory: PatientSummary ...", end="", flush=True)
+      PatientSummary = client.factory.create('PatientSummary')
+      print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", PatientSummary)
+      print("\n"+"Assigning the values to: PatientSummary ...", end="", flush=True)
+      PatientSummary = {
             "DateOfBirth" : "1998-07-20 03:00:00+00:00",    #YYYY-MM-DD HH:mm:ss
             "Email" : "sbalog@elementoarg.io",
             "FirstName" : "Santiago",
@@ -66,36 +66,36 @@ def create_appointment(client, CustomerKey, User, Password):
             #"PreferredPhoneType" : None,
             #"WorkEmail" : None,
             #"WorkPhone" : None
-        }
-        print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", PatientSummary)
-        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+      }
+      print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", PatientSummary)
+      print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #print("\n"+"Creating factory: AppointmentCreate ...", end="", flush=True)
-        #AppointmentCreate = client.factory.create('AppointmentCreate')
-        #print('\033[32m', "(Ok)", '\033[0m')
-        #print("\n", AppointmentCreate)
-        #print('\033[33m'+'=' * term_size.columns + '\033[0m')
+      #print("\n"+"Creating factory: AppointmentCreate ...", end="", flush=True)
+      #AppointmentCreate = client.factory.create('AppointmentCreate')
+      #print('\033[32m', "(Ok)", '\033[0m')
+      #print("\n", AppointmentCreate)
+      #print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Create a factory
-        print("\n"+"Creating factory: CreateAppointmentReq ...", end="", flush=True)
-        CreateAppointmentReq = client.factory.create('CreateAppointmentReq')
-        print('\033[32m', "(Ok)", '\033[0m')
-        print("\n", CreateAppointmentReq)
-        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+      #   Create a factory
+      print("\n"+"Creating factory: CreateAppointmentReq ...", end="", flush=True)
+      CreateAppointmentReq = client.factory.create('CreateAppointmentReq')
+      print('\033[32m', "(Ok)", '\033[0m')
+      print("\n", CreateAppointmentReq)
+      print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Assign the values
-        print("\n"+"Assigning the values to: RequestHeader ...", end="", flush=True)
-        CreateAppointmentReq.RequestHeader = {
+      #   Assign the values
+      print("\n"+"Assigning the values to: RequestHeader ...", end="", flush=True)
+      CreateAppointmentReq.RequestHeader = {
             "CustomerKey" : CustomerKey,
             "Password" : Password,
             "User" : User
-        }
-        print('\033[32m', "(Ok)", '\033[0m')
+      }
+      print('\033[32m', "(Ok)", '\033[0m')
 
-        #   Assign the values
-        print("\n"+"Assigning the values to: Appointment ...", end="", flush=True)
-        CreateAppointmentReq.Appointment = {
+      #   Assign the values
+      print("\n"+"Assigning the values to: Appointment ...", end="", flush=True)
+      CreateAppointmentReq.Appointment = {
             #"AppointmentId" : "",
             #"AppointmentName" : "Test Create Appointment",
             #"AppointmentReasonId" : None,
@@ -128,42 +128,150 @@ def create_appointment(client, CustomerKey, User, Password):
             #"UpdatedAt" : None,
             #"UpdatedBy" : None,
             #"WasCreatedOnline" : True
-        }
-        print('\033[32m', "(Ok)", '\033[0m')
+      }
+      print('\033[32m', "(Ok)", '\033[0m')
 
-        #   Factory ready for use
-        print("\n", CreateAppointmentReq)
-        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+      #   Factory ready for use
+      print("\n", CreateAppointmentReq)
+      print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Call the service CreateAppointment with the param CreateAppointmentReq
-        print("\n"+"Starting request: CreateAppointment ...", end="", flush=True)
-        response = client.service.CreateAppointment(CreateAppointmentReq)
-        print('\033[32m', "(Ok)", '\033[0m')
-        print("\n", response)
-        print('\033[33m'+'=' * term_size.columns + '\033[0m')
-    except Exception as error:
-        return error
+      #   Call the service CreateAppointment with the param CreateAppointmentReq
+      print("\n"+"Starting request: CreateAppointment ...", end="", flush=True)
+      response = client.service.CreateAppointment(CreateAppointmentReq)
+      print('\033[32m', "(Ok)", '\033[0m')
+      print("\n", response)
+      print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
+      #   Create result of the response
+      print("\n"+"Createting result of the response ...", end="", flush=True)
+      result = json.dumps(recursive_dict(response), indent=4)
+      print('\033[32m', "(Ok)", '\033[0m')
+      print("\nResult:", result)
+
+      return result
+   except Exception as error:
+      return error
+
+   """
+   Appointment =
+      (AppointmentCreate){
+         AppointmentId = None
+         AppointmentName = None
+         AppointmentReasonId = None
+         AppointmentStatus =
+            (AppointmentStatus){
+               value = None
+            }
+         AppointmentType =
+            (AppointmentType){
+               value = None
+            }
+         AppointmentUUID = None
+         AttendeesCount = None
+         CreatedAt = None
+         CreatedBy = None
+         CustomerId = None
+         EndTime = None
+         ForRecare = None
+         InsurancePolicyAuthorizationId = None
+         IsDeleted = None
+         IsGroupAppointment = None
+         IsRecurring = None
+         MaxAttendees = None
+         Notes = None
+         OccurrenceId = None
+         PatientCaseId = None
+         PatientSummaries =
+            (ArrayOfGroupPatientSummary){
+               GroupPatientSummary[] = <empty>
+            }
+         PatientSummary =
+            (PatientSummary){
+               DateOfBirth = None
+               Email = None
+               FirstName = None
+               GenderId = None
+               Guid = None
+               HomePhone = None
+               LastName = None
+               MiddleName = None
+               MobilePhone = None
+               OtherEmail = None
+               OtherPhone = None
+               PatientId = None
+               PracticeId = None
+               PreferredEmailType = None
+               PreferredPhoneType = None
+               WorkEmail = None
+               WorkPhone = None
+            }
+         PracticeId = None
+         ProviderId = None
+         RecurrenceRule =
+            (RecurrenceRule){
+               AppointmentId = None
+               DayInterval = None
+               DayOfMonth = None
+               DayOfWeek =
+                  (ArrayOfDayOfWeek){
+                     DayOfWeek[] = <empty>
+                  }
+               DayOfWeekFlags = None
+               DayOfWeekMonthlyOrdinal =
+                  (ArrayOfOrdinal){
+                     Ordinal[] = <empty>
+                  }
+               DayOfWeekMonthlyOrdinalFlags = None
+               EndDate = None
+               MonthInterval = None
+               MonthOfYear = None
+               NumOccurrences = None
+               NumberOfTimes = None
+               RecurrenceRuleId = None
+               StartDate = None
+               TypeOfDay =
+                  (TypeOfDay){
+                     value = None
+                  }
+               TypeOfDayMonthlyOrdinal =
+                  (ArrayOfOrdinal){
+                     Ordinal[] = <empty>
+                  }
+               TypeOfDayMonthlyOrdinalFlags = None
+            }
+         ResourceId = None
+         ResourceIds =
+            (ArrayOflong){
+               long[] = <empty>
+            }
+         ServiceLocationId = None
+         StartTime = None
+         UpdatedAt = None
+         UpdatedBy = None
+         WasCreatedOnline = None
+      }
+   """
 
 def create_patient(client, CustomerKey, User, Password):
-    term_size = os.get_terminal_size()
-    print("\n")
-    print('\033[33m'+'=' * term_size.columns + '\033[0m')
+   term_size = os.get_terminal_size()
+   print("\n")
+   print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-    try:
-        #   Create a factory
-        print("\n"+"Creating factory: CreatePatientReq ...", end="", flush=True)
-        CreatePatientReq = client.factory.create('CreatePatientReq')
-        print('\033[32m', "(Ok)", '\033[0m')
-        print("\n", CreatePatientReq)
-        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+   try:
+      #   Create a factory
+      print("\n"+"Creating factory: CreatePatientReq ...", end="", flush=True)
+      CreatePatientReq = client.factory.create('CreatePatientReq')
+      print('\033[32m', "(Ok)", '\033[0m')
+      print("\n", CreatePatientReq)
+      print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-        #   Assign the values
-        print("\n"+"Assigning the values to: RequestHeader ...", end="", flush=True)
-        CreatePatientReq.RequestHeader = {
+      #   Assign the values
+      print("\n"+"Assigning the values to: RequestHeader ...", end="", flush=True)
+      CreatePatientReq.RequestHeader = {
             "CustomerKey" : CustomerKey,
             "Password" : Password,
             "User" : User
-        }
-        print('\033[32m', "(Ok)", '\033[0m')
-    except Exception as error:
-        return error
+      }
+      print('\033[32m', "(Ok)", '\033[0m')
+   except Exception as error:
+      return error
