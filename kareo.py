@@ -2,13 +2,14 @@ import json
 import os
 import sys
 
-from suds.client import Client
+#from suds.client import Client
 from Utils.to_dict import recursive_dict
 from Utils.console import clear_console
 from Method.create import *
 from Method.delete import *
 from Method.get import *
 from Method.update import *
+import suds
 
 if __name__ == "__main__":
 
@@ -36,7 +37,7 @@ if __name__ == "__main__":
     # Conect to Kareo API
     clear_console()
     print("Conecting to Kareo Service API ...", end="", flush=True)
-    client = Client(wsdl)
+    client = suds.client.Client(wsdl)
     print('\033[32m'+'\033[01m'+'\033[05m'+"(Success)", '\033[0m')
     #print(client)
 
@@ -95,7 +96,7 @@ if __name__ == "__main__":
         GetServiceLocations( ns4:GetServiceLocationsReq )
         GetTransactions( GetTransactionsReq )
         RegisterExternalVendor(RegisterExternalVendorReq )
-        UpdateAppointment( npdateAppointmentReq )
+        UpdateAppointment( npdateAppointmentReq )           #not working with npdateAppointmentReq. Use UpdateAppointmentReq instead
         UpdateEncounterStatus( npdateEncounterStatusReq )
         UpdatePatient( npdatePatientReq UpdatePatientReq, )
         UpdatePatientsExternalID( npdatePatientsExternalIDReq )

@@ -79,7 +79,7 @@ def get_appointments(client, CustomerKey, User, Password):
         GetAppointmentsReq.Filter = {
             #"AppointmentReason" : "",
             #"ConfirmationStatus" : "", # Confirmed, Check-in, No-show, Check-out, Rescheduled, Scheduled, Cancelled
-            "EndDate" : "11/30/2021 8:30:00 PM",
+            "EndDate" : "12/31/2021 8:30:00 PM",
             #"FromCreatedDate" : "",
             #"FromLastModifiedDate" : "",
             #"PatientCasePayerScenario" : "",
@@ -88,7 +88,7 @@ def get_appointments(client, CustomerKey, User, Password):
             "PracticeName" : "Intelligent Sleep with Renuma",
             #"ResourceName" : "",
             #"ServiceLocationName" : "",
-            "StartDate" : "11/01/2021 4:00:00 AM",
+            "StartDate" : "12/01/2021 4:00:00 AM",
             "TimeZoneOffsetFromGMT" : "0",
             #"ToCreatedDate" : "",
             #"ToLastModifiedDate" : "",
