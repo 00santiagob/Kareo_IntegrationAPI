@@ -63,10 +63,12 @@ def create_appointment(client, CustomerKey, User, Password):
         print("\n"+"Starting request: CreateAppointment ...", end="", flush=True)
         try:
             response = client.service.CreateAppointment(CreateAppointmentReq)
-            print('\033[32m', "(Ok)", '\033[0m')
             if (response['ErrorResponse']['IsError']):
-                print(response['ErrorResponse']['ErrorMessage'])
+                print('\033[31m', "(Fail)", '\033[0m')
+                print("\n\033[31mError:\033[0m", response['ErrorResponse']['ErrorMessage'])
+                print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
             else:
+                print('\033[32m', "(Ok)", '\033[0m')
                 print("\n", response['Appointment'])
         except Exception as error:
             print("error:",error)
@@ -115,12 +117,16 @@ def create_patient(client, CustomerKey, User, Password):
         print("\n"+"Starting request: CreatePatientReq ...", end="", flush=True)
         try:
             response = client.service.CreatePatient(CreatePatientReq)
-            print('\033[32m', "(Ok)", '\033[0m')
             if (response['ErrorResponse']['IsError']):
-                print(response['ErrorResponse']['ErrorMessage'])
+                print('\033[31m', "(Fail)", '\033[0m')
+                print("\n\033[31mError:\033[0m", response['ErrorResponse']['ErrorMessage'])
+                print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
             else:
+                print('\033[32m', "(Ok)", '\033[0m')
                 print("\n", response['SecurityResponse'])
-            print('\033[33m'+'=' * term_size.columns + '\033[0m')
+                result =  {"PatientID" : response['PatientID']}
+                print(result)
+                return result
         except Exception as error:
             print("\nerror:\n",error)        
     except Exception as error:
