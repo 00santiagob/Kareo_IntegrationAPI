@@ -10,24 +10,14 @@ import ipdb
 
 #   UpdateAppointment( npdateAppointmentReq )
 def update_appointment(client, CustomerKey, User, Password):
-
+    AppointmentId = int(input("Enter the appointment id: "))
     term_size = os.get_terminal_size()
-    print("\n")
     print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
     try:
-        #   Create a factory and assign the values. You can also parse this argument as strings 
-        print("\n"+"Creating factory: AppointmentStatus ...", end="", flush=True)
-        AppointmentStatus = client.factory.create('AppointmentStatus')
-        print('\033[32m', "(Ok)", '\033[0m')
-
         #   Create a factory
         print("\n"+"Creating factory: UpdateAppointmentReq ...", end="", flush=True)
         UpdateAppointmentReq = client.factory.create('UpdateAppointmentReq')
-        print('\033[32m', "(Ok)", '\033[0m')
-
-        print("\n"+"Creating factory: AppointmentStatus ...", end="", flush=True)
-        AppointmentStatus = client.factory.create('AppointmentStatus')
         print('\033[32m', "(Ok)", '\033[0m')
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
@@ -38,69 +28,73 @@ def update_appointment(client, CustomerKey, User, Password):
         UpdateAppointmentReq.RequestHeader['Password'] = Password
         print('\033[32m', "(Ok)", '\033[0m')
 
+        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
         GetCustomerIdFromKeyRequest = client.factory.create('GetCustomerIdFromKeyRequest')
         GetCustomerIdFromKeyRequest['CustomerKey'] = CustomerKey
         GetCustomerIdFromKeyRequest['User'] = User
         GetCustomerIdFromKeyRequest['Password'] = Password
-        Customer = client.service.GetCustomerIdFromKey( GetCustomerIdFromKeyRequest )
-
         print("\n"+"Assigning the values to: Appointment ...", end="", flush=True)
-        UpdateAppointmentReq.Appointment['AppointmentId'] = 10
+        UpdateAppointmentReq.Appointment['AppointmentId'] = AppointmentId
         UpdateAppointmentReq.Appointment['AppointmentStatus'] = "Cancelled"
-        UpdateAppointmentReq.Appointment['ServiceLocationId'] = 10
+        UpdateAppointmentReq.Appointment['ServiceLocationId'] = 1
         UpdateAppointmentReq.Appointment['StartTime'] = datetime(2021, 12, 16, 14, 30, 00)
         UpdateAppointmentReq.Appointment['EndTime'] = datetime(2021, 12, 16, 15, 00, 00)
         UpdateAppointmentReq.Appointment['AppointmentReasonId'] = 0
-        UpdateAppointmentReq.Appointment['ProviderId'] = None #Optional
+        UpdateAppointmentReq.Appointment['ProviderId'] = 2 #Optional
         UpdateAppointmentReq.Appointment['ResourceId'] = 1
+        UpdateAppointmentReq.Appointment['ResourceIds'] = "None"
         UpdateAppointmentReq.Appointment['PatientId'] = 3
-        UpdateAppointmentReq.Appointment['ResourceIds'] = None #Optional
         UpdateAppointmentReq.Appointment['Notes'] = "This is an example note from your doctor" #Optional
         UpdateAppointmentReq.Appointment['AppointmentName'] = None
         UpdateAppointmentReq.Appointment['MaxAttendees'] = 1
         UpdateAppointmentReq.Appointment['IsGroupAppointment'] = None #Optional
         UpdateAppointmentReq.Appointment['InsurancePolicyAuthorizationId'] = None #Optional
         UpdateAppointmentReq.Appointment['PatientCaseId'] = None #Optional
-        UpdateAppointmentReq.Appointment['UpdatedBy'] = Customer['CustomerId'] #Optional
         UpdateAppointmentReq.Appointment['UpdatedAt'] = datetime.now() #Optional
         UpdateAppointmentReq.Appointment['OccurrenceId'] = None #Optional
         UpdateAppointmentReq.Appointment['IsRecurring'] = None #Optional
 
+        print(UpdateAppointmentReq)
+
         print('\033[32m', "(Ok)", '\033[0m')
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
+
+        ipdb.set_trace()
+
         print("\n"+"Starting request: UpdateAppointment ...", end="", flush=True)
         try:
-            appointment_response = client.service.UpdateAppointment(UpdateAppointmentReq)
-            print('\033[32m', "(Ok)", '\033[0m')
-            print("\nResult:", appointment_response)
-            print('\033[33m'+'=' * term_size.columns + '\033[0m')
-
+            response = client.service.UpdateAppointment(UpdateAppointmentReq)
+            if (response['ErrorResponse']['IsError']):
+                print('\033[31m', "(Fail)", '\033[0m')
+                print("\n\033[31mError:\033[0m", response['ErrorResponse']['ErrorMessage'])
+                print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
+            else:
+                print('\033[32m', "(Ok)", '\033[0m')
+                print("\n", response)
         except Exception as error:
-            print("\nerror:\n",error)
-            appointment_response = {"ERROR": "CHAOS AND DESTRUCTION"}
-            print(appointment_response['ERROR'])
+            return error
+
+        print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
         #   Create result of the response
         print("\n"+"Createting result of the response ...", end="", flush=True)
         result = json.dumps(recursive_dict(appointment_response), indent=4)
         print('\033[32m', "(Ok)", '\033[0m')
-        print("\nResult:", result)
-
     except Exception as error:
         return error
 
 def update_patient(client, CustomerKey, User, Password):
+    PatientId = input("Enter the patient id: ")
     term_size = os.get_terminal_size()
+    print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
-    #ipdb.set_trace()
     try:
         #Create a factory
         print("\n"+"Creating factory: UpdatePatientReq ...", end="", flush=True)
         UpdatePatientReq = client.factory.create('UpdatePatientReq')
         print('\033[32m', "(Ok)", '\033[0m')
-
-        print(UpdatePatientReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
@@ -111,8 +105,10 @@ def update_patient(client, CustomerKey, User, Password):
         UpdatePatientReq.RequestHeader['User'] = User
         print('\033[32m', "(Ok)", '\033[0m')
 
+        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
         print("\n"+"Assigning the values to: UpdatePatientReq.Patient ...", end="", flush=True)
-        UpdatePatientReq.Patient['PatientID'] = 5
+        UpdatePatientReq.Patient['PatientID'] = PatientId
         UpdatePatientReq.Patient['FirstName'] = "Leonardo"
         UpdatePatientReq.Patient['LastName'] = "Amato"
         UpdatePatientReq.Patient['EmailAddress'] = "amato979@gmail.com"
@@ -126,11 +122,28 @@ def update_patient(client, CustomerKey, User, Password):
 
         print("\n"+"Starting request: UpdatePatient ...", end="", flush=True)
         try:
-            UpdatePatientRes = client.service.UpdatePatient(UpdatePatientReq)
-            print('\033[32m', "(Ok)", '\033[0m')
-            print("\nResult:", UpdatePatientRes)
-            print('\033[33m'+'=' * term_size.columns + '\033[0m')
+            response = client.service.UpdatePatient(UpdatePatientReq)
+            if (response['ErrorResponse']['IsError']):
+                print('\033[31m', "(Fail)", '\033[0m')
+                print("\n\033[31mError:\033[0m", response['ErrorResponse']['ErrorMessage'])
+                print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
+            else:
+                print('\033[32m', "(Ok)", '\033[0m')
+                to_print = {
+                    "PatientExternalID" : response['PatientExternalID'],
+                    "PatientID" : response['PatientExternalID'],
+                    "PracticeExternalID" : response['PracticeExternalID'],
+                    "PracticeID" : response['PracticeID'],
+                    "PracticeName" : response['PracticeName']
+                }
+                print("\n", to_print)
         except Exception as error:
-            print(error)
+            return error
+
+        #   Create result of the response
+        print("\n"+"Createting result of the response ...", end="", flush=True)
+        result = json.dumps(recursive_dict(response), indent=4)
+        print('\033[32m', "(Ok)", '\033[0m')
+        return result
     except Exception as error:
         return error

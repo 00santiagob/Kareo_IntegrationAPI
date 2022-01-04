@@ -130,7 +130,7 @@ if __name__ == "__main__":
         Appointment = get_appointment(client, CustomerKey, User, Password)
     elif method == '4':
         Appointments = None
-        Appointment = get_appointments(client, CustomerKey, User, Password)
+        Appointments = get_appointments(client, CustomerKey, User, Password)
     elif method == '5':
         Patient = None
         Patient = get_patient(client, CustomerKey, User, Password)

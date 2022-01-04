@@ -131,5 +131,3 @@ def create_patient(client, CustomerKey, User, Password):
             print("\nerror:\n",error)        
     except Exception as error:
         print("\nerror:\n",error)
-        response = {"ERROR": "CHAOS AND DESTRUCTION"}
-        print(response['ERROR'])
