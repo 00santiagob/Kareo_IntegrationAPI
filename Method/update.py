@@ -55,11 +55,8 @@ def update_appointment(client, CustomerKey, User, Password):
         UpdateAppointmentReq.Appointment['OccurrenceId'] = None #Optional
         UpdateAppointmentReq.Appointment['IsRecurring'] = None #Optional
 
-        print(UpdateAppointmentReq)
-
         print('\033[32m', "(Ok)", '\033[0m')
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
-
 
         ipdb.set_trace()
 
