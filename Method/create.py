@@ -13,20 +13,30 @@ def create_appointment(client, CustomerKey, User, Password):
     print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
     try:
-        #   Create a factory and assign the values
+        #   Create a factory
         print("\n"+"Creating factory: AppointmentStatus ...", end="", flush=True)
         AppointmentStatus = client.factory.create('AppointmentStatus')
         print('\033[32m', "(Ok)", '\033[0m')
 
-        #   Create a factory and assign the values
+        print(AppointmentStatus)
+
+        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
+        #   Create a factory
         print("\n"+"Creating factory: AppointmentType ...", end="", flush=True)
         AppointmentType = client.factory.create('AppointmentType')
         print('\033[32m', "(Ok)", '\033[0m')
 
-        #   Create a factory and assign the values
+        print(AppointmentType)
+
+        print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
+        #   Create a factory
         print("\n"+"Creating factory: CreateAppointmentReq ...", end="", flush=True)
         CreateAppointmentReq = client.factory.create('CreateAppointmentReq')
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print(CreateAppointmentReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
@@ -37,31 +47,38 @@ def create_appointment(client, CustomerKey, User, Password):
         CreateAppointmentReq.RequestHeader['User'] = User
         print('\033[32m', "(Ok)", '\033[0m')
 
+        print(CreateAppointmentReq)
+
         #   Assign the values
         print("\n"+"Assigning the values to: Appointment ...", end="", flush=True)
-        CreateAppointmentReq.Appointment['AppointmentStatus'] = AppointmentStatus['Scheduled']
-        CreateAppointmentReq.Appointment['AppointmentType'] = AppointmentType['P']
-        CreateAppointmentReq.Appointment['EndTime'] = datetime(2021, 12, 16, 15, 00, 00)
-        CreateAppointmentReq.Appointment['ForRecare'] = False
-        CreateAppointmentReq.Appointment['InsurancePolicyAuthorizationId'] = 1
-        CreateAppointmentReq.Appointment['IsDeleted'] = False
-        CreateAppointmentReq.Appointment['IsGroupAppointment'] = False
-        CreateAppointmentReq.Appointment['IsRecurring'] = False
-        CreateAppointmentReq.Appointment['Notes'] = "This is an example note from your doctor",
-        CreateAppointmentReq.Appointment['PatientSummaries'] = None
-        CreateAppointmentReq.Appointment['PracticeId'] = 1
-        CreateAppointmentReq.Appointment['ProviderId'] = 1
-        CreateAppointmentReq.Appointment['ServiceLocationId'] = 1
-        CreateAppointmentReq.Appointment['StartTime'] = datetime(2021, 12, 16, 14, 30, 00)
-        CreateAppointmentReq.Appointment['WasCreatedOnline'] = True
-        CreateAppointmentReq.Appointment['PatientSummary']['PatientId'] = 5
+        # CreateAppointmentReq.Appointment['AppointmentName'] = "Appointment for Renuma"  # Opcional
+        # CreateAppointmentReq.Appointment['AppointmentReasonId'] = 0 # Opcional
+        CreateAppointmentReq.Appointment['AppointmentStatus'] = AppointmentStatus['Scheduled']  # Required
+        CreateAppointmentReq.Appointment['AppointmentType'] = AppointmentType['P']  # Required
+        CreateAppointmentReq.Appointment['EndTime'] = datetime(2022, 1, 16, 15, 00, 00)    # Required
+        CreateAppointmentReq.Appointment['ForRecare'] = False   # Optional
+        # CreateAppointmentReq.Appointment['InsurancePolicyAuthorizationId'] = 1  # Optional
+        CreateAppointmentReq.Appointment['IsDeleted'] = False   # Optional
+        CreateAppointmentReq.Appointment['IsGroupAppointment'] = False  # Optional
+        CreateAppointmentReq.Appointment['IsRecurring'] = False # Optional
+        CreateAppointmentReq.Appointment['Notes'] = "This is an example note from your doctor", # Optional
+        # CreateAppointmentReq.Appointment['PatientSummaries'] = None # Optional
+        CreateAppointmentReq.Appointment['PatientSummary']['PatientId'] = 3 # Required
+        CreateAppointmentReq.Appointment['PracticeId'] = 1  # Required
+        CreateAppointmentReq.Appointment['ProviderId'] = 1  # Optional
+        CreateAppointmentReq.Appointment['ServiceLocationId'] = 1   # Required
+        CreateAppointmentReq.Appointment['StartTime'] = datetime(2022, 1, 16, 14, 30, 00)  # Required
+        CreateAppointmentReq.Appointment['WasCreatedOnline'] = True # Required
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print(CreateAppointmentReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
         #   Call the service CreateAppointment with the param CreateAppointmentReq
         print("\n"+"Starting request: CreateAppointment ...", end="", flush=True)
         try:
+            response = None
             response = client.service.CreateAppointment(CreateAppointmentReq)
             if (response['ErrorResponse']['IsError']):
                 print('\033[31m', "(Fail)", '\033[0m')
