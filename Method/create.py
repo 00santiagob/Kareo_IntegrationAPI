@@ -6,7 +6,6 @@ from datetime import datetime
 from suds.client import Client
 from Utils.to_dict import recursive_dict
 from Utils.console import clear_console
-import ipdb
 
 def create_appointment(client, CustomerKey, User, Password):
     term_size = os.get_terminal_size()
@@ -94,7 +93,7 @@ def create_appointment(client, CustomerKey, User, Password):
 
         #   Create result of the response
         print("\n"+"Createting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
 
         return result
@@ -110,6 +109,8 @@ def create_patient(client, CustomerKey, User, Password):
         print("\n"+"Creating factory: CreatePatientReq ...", end="", flush=True)
         CreatePatientReq = client.factory.create('CreatePatientReq')
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print(CreatePatientReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 

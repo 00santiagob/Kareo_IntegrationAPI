@@ -18,5 +18,12 @@ def recursive_dict(dic):
                 else:
                     out[key].append(value)
         else:
-            out[key] = str(dic[key])
+            if dic[key] == None:
+                out[key] = None     # dic[key]
+            elif dic[key] == True:
+                out[key] = True
+            elif dic[key] == False:
+                out[key] = False
+            else:
+                out[key] = str(dic[key])
     return out

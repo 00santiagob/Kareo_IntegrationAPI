@@ -47,7 +47,7 @@ def get_appointment(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
 
         return result
@@ -63,6 +63,8 @@ def get_appointments(client, CustomerKey, User, Password):
         print("\n"+"Creating factory: GetAppointmentsReq ...", end="", flush=True)
         GetAppointmentsReq = client.factory.create('GetAppointmentsReq')
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print(GetAppointmentsReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
@@ -121,7 +123,7 @@ def get_appointments(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
         return result
     except Exception as error:
@@ -137,6 +139,8 @@ def get_patient(client, CustomerKey, User, Password):
         print("\n"+"Creating factory: GetPatientReq ...", end="", flush=True)
         GetPatientReq = client.factory.create('GetPatientReq')
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print("GetPatientReq:", GetPatientReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
@@ -163,7 +167,7 @@ def get_patient(client, CustomerKey, User, Password):
                 print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
             else:
                 print('\033[32m', "(Ok)", '\033[0m')
-                print("\n", response['Patient'])
+                # print("\n", response)
         except Exception as error:
             return error
 
@@ -171,8 +175,13 @@ def get_patient(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
-        print('\033[32m', "(Ok)", '\033[0m')
+        result = {}
+        if response['Patient'] == None:
+            print('\033[31m', "(Patient not exist)", '\033[0m')
+        else:
+            result = json.loads(json.dumps(recursive_dict(response), indent=4))
+            print('\033[32m', "(Ok)", '\033[0m')
+            print('\n', result)
         return result
 
     except Exception as error:
@@ -187,6 +196,8 @@ def get_patients(client, CustomerKey, User, Password):
         print("\n"+"Creating factory: GetPatientsReq ...", end="", flush=True)
         GetPatientsReq = client.factory.create('GetPatientsReq')
         print('\033[32m', "(Ok)", '\033[0m')
+
+        print("GetPatientsReq:", GetPatientsReq)
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
 
@@ -221,7 +232,7 @@ def get_patients(client, CustomerKey, User, Password):
                 print("\n\033[35mStackTrace:\033[0m\n", response['ErrorResponse']['StackTrace'])
             else:
                 print('\033[32m', "(Ok)", '\033[0m')
-                print("\n", response['Patients'])
+                # print("\n", response['Patients'])
         except Exception as error:
             return error
 
@@ -229,7 +240,7 @@ def get_patients(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
         return result
 
@@ -288,7 +299,7 @@ def get_all_patients(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
         return result
     except Exception as error:
@@ -305,6 +316,8 @@ def get_providers(client, CustomerKey, User, Password):
         print('\033[32m', "(Ok)", '\033[0m')
 
         print('\033[33m'+'=' * term_size.columns + '\033[0m')
+
+        print(GetProvidersReq)
 
         #   Assign the values
         print("\n"+"Assigning the values to: RequestHeader ...", end="", flush=True)
@@ -350,7 +363,7 @@ def get_providers(client, CustomerKey, User, Password):
 
         #   Get result of the response
         print("\n"+"Getting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
         return result
     except Exception as error:

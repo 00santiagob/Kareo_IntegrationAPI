@@ -6,7 +6,6 @@ from datetime import datetime
 from suds.client import Client
 from Utils.to_dict import recursive_dict
 from Utils.console import clear_console
-import ipdb
 
 #   UpdateAppointment( npdateAppointmentReq )
 def update_appointment(client, CustomerKey, User, Password):
@@ -120,7 +119,7 @@ def update_appointment(client, CustomerKey, User, Password):
 
         #   Create result of the response
         print("\n"+"Createting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
     except Exception as error:
         return error
@@ -182,7 +181,7 @@ def update_patient(client, CustomerKey, User, Password):
 
         #   Create result of the response
         print("\n"+"Createting result of the response ...", end="", flush=True)
-        result = json.dumps(recursive_dict(response), indent=4)
+        result = json.loads(json.dumps(recursive_dict(response), indent=4))
         print('\033[32m', "(Ok)", '\033[0m')
         return result
     except Exception as error:
